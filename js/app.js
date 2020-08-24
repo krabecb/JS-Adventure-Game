@@ -24,42 +24,45 @@ const game = {
     },
 
     showStats: function() {
-        //Get location of ul by ID
         const statsLocation = document.querySelector('#stats')
         statsLocation.innerText = '' //Prevents duplication
 
         const liName = document.createElement('li')
-        liName.innerText = `Name: ${this.adventurer.name}`
-
         const liLevel = document.createElement('li')
-        liLevel.innerText = `Level: ${this.adventurer.level}`
-
         const liHealth = document.createElement('li')
-        liHealth.innerText = `Health: ${this.adventurer.health}`
-
         const liMelee = document.createElement('li')
-        liMelee.innerText = `Melee: ${this.adventurer.melee}`
-
         const liRanged = document.createElement('li')
-        liRanged.innerText = `Ranged: ${this.adventurer.ranged}`
-
         const liDefense = document.createElement('li')
-        liDefense.innerText = `Defense: ${this.adventurer.defense}`
-
         const liSpeech = document.createElement('li')
-        liSpeech.innerText = `Speech: ${this.adventurer.speech}`
-
         const liStealth = document.createElement('li')
-        liStealth.innerText = `Stealth: ${this.adventurer.stealth}`
 
-        statsLocation.append(liName)
-        statsLocation.append(liLevel)
-        statsLocation.append(liHealth)
-        statsLocation.append(liMelee)
-        statsLocation.append(liRanged)
-        statsLocation.append(liDefense)
-        statsLocation.append(liSpeech)
-        statsLocation.append(liStealth)
+        let listArr = []
+        listArr.push(liName)
+        listArr.push(liLevel)
+        listArr.push(liHealth)
+        listArr.push(liMelee)
+        listArr.push(liRanged)
+        listArr.push(liDefense)
+        listArr.push(liSpeech)
+        listArr.push(liStealth)
+
+        let statsList = ['name', 'level', 'health', 'melee', 'ranged', 'defense', 'speech', 'stealth']
+
+        let adventurerStats = [
+            this.adventurer.name, 
+            this.adventurer.level,
+            this.adventurer.health,
+            this.adventurer.melee,
+            this.adventurer.ranged,
+            this.adventurer.defense,
+            this.adventurer.speech,
+            this.adventurer.stealth
+        ]
+
+        for(let i = 0; i < listArr.length; i++) {
+            listArr[i].innerText = `${statsList[i]}: ${adventurerStats[i]}`
+            statsLocation.append(listArr[i])
+        }
     },
 }
 

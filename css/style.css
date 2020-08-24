@@ -8,6 +8,24 @@ button {
 
 }
 
+#stats-container {
+	font-family: 'Bebas Neue', cursive;
+	font-size: 25px;
+	width: max-content;
+	display: flex;
+	align-items: center;
+}
+
+#stats {
+	list-style-type: none;
+}
+
+#game-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
 #title {
 	font-family: 'Bebas Neue', cursive;
 	width: max-content;
@@ -29,4 +47,5 @@ button {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	width: max-content;
 }
