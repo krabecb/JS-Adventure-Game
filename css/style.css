@@ -1,3 +1,32 @@
 body {
-	background-color: lavender;
+	background-color: #F2AC57;
+}
+
+button {
+	width: max-content;
+	margin-top: 20px;
+
+}
+
+#title {
+	font-family: 'Bebas Neue', cursive;
+	width: max-content;
+}
+
+#screen {
+	height:550px;
+	width: 600px	;
+	border: 3px solid black;
+}
+
+#player-options {
+	width: 600px;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+#main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
