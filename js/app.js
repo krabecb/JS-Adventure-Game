@@ -64,6 +64,8 @@ const game = {
             statsLocation.append(listArr[i])
         }
     },
+
+    
 }
 
 game.createAdventurer("Brian")
