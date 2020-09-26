@@ -1,6 +1,41 @@
+//JQuery - Set up index.html
+const $gameContainer = $('<div id="game-container"></div>')
+$(document.body).prepend($gameContainer)
+
+const $statsContainer = $('<div id="stats-container"></div>')
+$($gameContainer).prepend($statsContainer)
+
+const $ulStats = $('<ul id="stats"></ul>')
+$($statsContainer).prepend($ulStats)
+
+const $mainContainer = $('<div id="main"></div>')
+$($gameContainer).append($mainContainer)
+
+const $title = $('<h1 id="title">The Raven\s Whisper</h1>')
+$($mainContainer).prepend($title)
+
+const $screen = $('<div id="screen"></div>')
+$($mainContainer).append($screen)
+
+const $screenInput = $('<input id="screen-input" type="text" name="screen-input" placeholder="What is your name?">')
+$($screen).prepend($screenInput)
+
+const $startButton = $('<button id="start-button">Start Adventure</button>')
+$($screen).append($startButton)
+
+const $playerOptions = $('<div id="player-options"></div>')
+$($mainContainer).append($playerOptions)
+
+let playerButtons = 4
+
+for(let i = 0; i < playerButtons; i++) {
+    let $button = $('<button></button>')
+    $($playerOptions).append($button)
+}
+
 class Adventurer {
     constructor(name) {
-        console.log('Constructor is working.')
+        // console.log('Constructor is working.')
 
         this.name = name
         this.level = 1
@@ -13,7 +48,10 @@ class Adventurer {
     }
 }
 
+
 const game = {
+
+
     adventurer: '', //Holds adventurer information.
 
     createAdventurer: function(name) {
@@ -24,6 +62,10 @@ const game = {
     },
 
     showStats: function() {
+        //JQuery
+        // const $stats = $('<ul id="stats"></ul>')
+        // console.log(`Here is $stats: ${$stats}`)
+
         const statsLocation = document.querySelector('#stats')
         statsLocation.innerText = '' //Prevents duplication
 
