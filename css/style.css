@@ -40,10 +40,15 @@ button {
 	width: 600px	;
 	border: 3px solid whitesmoke;
 }
-#screen button {
-	height: 30px;
-	width: 60px;
 
+#screen input {
+	height: 34px;
+}
+
+#screen button {
+	height: 40px;
+	width: 90px;
+	margin-top: 0px;
 }
 
 #player-options {
