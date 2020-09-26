@@ -26,12 +26,18 @@ $($screen).append($startButton)
 const $playerOptions = $('<div id="player-options"></div>')
 $($mainContainer).append($playerOptions)
 
+//Creating player buttons
 let playerButtons = 4
 
 for(let i = 0; i < playerButtons; i++) {
-    let $button = $('<button></button>')
+    let $button = $('<button id="button-'+ i +'"></button>')
     $($playerOptions).append($button)
 }
+
+//Hiding playerOptions until game starts
+$playerOptions.css({
+    display: 'none'
+})
 
 class Adventurer {
     constructor(name) {
