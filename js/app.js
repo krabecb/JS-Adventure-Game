@@ -17,16 +17,19 @@ $($mainContainer).prepend($title)
 const $screen = $('<div id="screen"></div>')
 $($mainContainer).append($screen)
 
+const $form = $('<form id="input-form" name="name-form"></form>')
+$($screen).prepend($form)
+
 const $screenInput = $('<input id="screen-input" type="text" name="screen-input" placeholder="What is your name?">')
-$($screen).prepend($screenInput)
+$($form).prepend($screenInput)
 
 const $startButton = $('<button id="start-button">Start Adventure</button>')
-$($screen).append($startButton)
+$($form).append($startButton)
 
 const $playerOptions = $('<div id="player-options"></div>')
 $($mainContainer).append($playerOptions)
 
-//Creating player buttons
+//Creating player buttons.
 let playerButtons = 4
 
 for(let i = 0; i < playerButtons; i++) {
@@ -34,7 +37,7 @@ for(let i = 0; i < playerButtons; i++) {
     $($playerOptions).append($button)
 }
 
-//Hiding playerOptions until game starts
+//Hiding playerOptions until game starts.
 $playerOptions.css({
     display: 'none'
 })
@@ -63,7 +66,7 @@ const game = {
     createAdventurer: function(name) {
         this.adventurer = new Adventurer(name)
 
-        //Show stats and start game
+        //Show stats and start game.
         this.showStats()
     },
 
@@ -116,9 +119,12 @@ const game = {
     
 }
 
-game.createAdventurer("Brian")
-
-
-
-
-//Event Listeners
+//EVENT - Start Adventure button
+$( "#input-form" ).submit(function( event ) {
+  event.preventDefault()
+  game.createAdventurer($("input:text").val()) //Input is the element and text is the type.
+  $("input:text").val('')
+  $form.css({
+    display: 'none'
+  })
+})
