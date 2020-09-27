@@ -71,32 +71,6 @@ const game = {
     },
 
     showStats: function() {
-        //JQuery
-        // const $stats = $('<ul id="stats"></ul>')
-        // console.log(`Here is $stats: ${$stats}`)
-
-        const statsLocation = document.querySelector('#stats')
-        statsLocation.innerText = '' //Prevents duplication
-
-        const liName = document.createElement('li')
-        const liLevel = document.createElement('li')
-        const liHealth = document.createElement('li')
-        const liMelee = document.createElement('li')
-        const liRanged = document.createElement('li')
-        const liDefense = document.createElement('li')
-        const liSpeech = document.createElement('li')
-        const liStealth = document.createElement('li')
-
-        let listArr = []
-        listArr.push(liName)
-        listArr.push(liLevel)
-        listArr.push(liHealth)
-        listArr.push(liMelee)
-        listArr.push(liRanged)
-        listArr.push(liDefense)
-        listArr.push(liSpeech)
-        listArr.push(liStealth)
-
         let statsList = ['name', 'level', 'health', 'melee', 'ranged', 'defense', 'speech', 'stealth']
 
         let adventurerStats = [
@@ -110,10 +84,42 @@ const game = {
             this.adventurer.stealth
         ]
 
-        for(let i = 0; i < listArr.length; i++) {
-            listArr[i].innerText = `${statsList[i]}: ${adventurerStats[i]}`
-            statsLocation.append(listArr[i])
+        //JQuery
+        $statsContainer.val('')
+
+        // const statsLocation = document.querySelector('#stats')
+        // statsLocation.innerText = '' //Prevents duplication
+
+        for(let i = 0; i < statsList.length; i++) {
+            let $listName = $('<li id="'+ statsList[i] +'">'+ statsList[i] + ": " + adventurerStats[i] +'</li>')
+            $($ulStats).append($listName)
         }
+
+        // const liName = document.createElement('li')
+        // const liLevel = document.createElement('li')
+        // const liHealth = document.createElement('li')
+        // const liMelee = document.createElement('li')
+        // const liRanged = document.createElement('li')
+        // const liDefense = document.createElement('li')
+        // const liSpeech = document.createElement('li')
+        // const liStealth = document.createElement('li')
+
+        // let listArr = []
+        // listArr.push(liName)
+        // listArr.push(liLevel)
+        // listArr.push(liHealth)
+        // listArr.push(liMelee)
+        // listArr.push(liRanged)
+        // listArr.push(liDefense)
+        // listArr.push(liSpeech)
+        // listArr.push(liStealth)
+
+
+
+        // for(let i = 0; i < listArr.length; i++) {
+        //     listArr[i].innerText = `${statsList[i]}: ${adventurerStats[i]}`
+        //     statsLocation.append(listArr[i])
+        // }
     },
 
     
