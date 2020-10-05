@@ -85,7 +85,6 @@ const game = {
             this.adventurer.stealth
         ]
 
-        //JQuery
         $statsContainer.val('')
 
         for(let i = 0; i < statsList.length; i++) {
@@ -96,30 +95,34 @@ const game = {
 
     chapterOne: function() {
         let storyArr = [
-            `${this.adventurer.name} has always wanted to go on an adventure. You've dreamed of glorious battles where 
+            `You're name is ${this.adventurer.name}, and you have always wanted to go on an adventure. You've dreamed of glorious battles where 
             you would strike down any foe in your path.`, 
-            'Alas you are but a table cleaner',
-            'test 3'
+            "But unfortunately, you are just a table cleaner at the village tavern and aren't sure you would be a good fit as an adventurer anyway.",
+            "Then one night, a stranger walks into the tavern, dressed in a hooded cloak and equipped with a bow and dagger. He sits down at a table in the furthest corner of the tavern and gestures for you.",
+            "He asks if you know the way to the next town. You do, but you've only made the trip once when you were younger, so you are not sure if you'd be of help. The stranger tells you that he's asked people around town but they do not know the way.",
+            "From his cloak he grabs a silver sword and large bag of coin and places it on the table. Your eyes catch the glimmer of the well-crafted sword and the stranger notices. He knows that you're not in it for the money and he smiles, saying that he knew you have the look for adventure in your eyes.",
+            "The stranger confesses that his original guide did not survive the journey, but has a pet raven who keeps him company. Reluctantly, you agree to travel with him. You decide now is the time to take a leap of faith at being an adventurer, and the bag of coin would solve nearly all of your financial problems."
         ]
-
-        const $nextButtonOne = $('<button id="chapter-one-button">Next</button>')
-        $screen.append($nextButtonOne)
 
         let i = 0
 
-        $($screen).append("<p class='story'>" + storyArr[i] + "</p>")
+        $($screen).prepend("<p class='story'>" + storyArr[i] + "</p>")
+
+        const $nextButtonOne = $('<button id="chapter-one-button">Next</button>')
+        $screen.append($nextButtonOne)
 
         $( "#chapter-one-button" ).on('click', function() {
             if(i < storyArr.length) {
                 $(".story").remove()
                 i++
-                $($screen).append("<p class='story'>" + storyArr[i] + "</p>")
+                if(i === storyArr.length) {
+                    $("#chapter-one-button").remove()
+                } else {
+                $($screen).prepend("<p class='story'>" + storyArr[i] + "</p>")
+                }
             }
-            
         })
-
-    }
-    
+    } 
 }
 
 //EVENT - Start Adventure button
