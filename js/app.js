@@ -68,6 +68,7 @@ const game = {
 
         //Show stats and start game.
         this.showStats()
+        this.chapterOne()
     },
 
     showStats: function() {
@@ -87,41 +88,37 @@ const game = {
         //JQuery
         $statsContainer.val('')
 
-        // const statsLocation = document.querySelector('#stats')
-        // statsLocation.innerText = '' //Prevents duplication
-
         for(let i = 0; i < statsList.length; i++) {
             let $listName = $('<li id="'+ statsList[i] +'">'+ statsList[i] + ": " + adventurerStats[i] +'</li>')
             $($ulStats).append($listName)
-        }
-
-        // const liName = document.createElement('li')
-        // const liLevel = document.createElement('li')
-        // const liHealth = document.createElement('li')
-        // const liMelee = document.createElement('li')
-        // const liRanged = document.createElement('li')
-        // const liDefense = document.createElement('li')
-        // const liSpeech = document.createElement('li')
-        // const liStealth = document.createElement('li')
-
-        // let listArr = []
-        // listArr.push(liName)
-        // listArr.push(liLevel)
-        // listArr.push(liHealth)
-        // listArr.push(liMelee)
-        // listArr.push(liRanged)
-        // listArr.push(liDefense)
-        // listArr.push(liSpeech)
-        // listArr.push(liStealth)
-
-
-
-        // for(let i = 0; i < listArr.length; i++) {
-        //     listArr[i].innerText = `${statsList[i]}: ${adventurerStats[i]}`
-        //     statsLocation.append(listArr[i])
-        // }
+        } 
     },
 
+    chapterOne: function() {
+        let storyArr = [
+            `${this.adventurer.name} has always wanted to go on an adventure. You've dreamed of glorious battles where 
+            you would strike down any foe in your path.`, 
+            'Alas you are but a table cleaner',
+            'test 3'
+        ]
+
+        const $nextButtonOne = $('<button id="chapter-one-button">Next</button>')
+        $screen.append($nextButtonOne)
+
+        let i = 0
+
+        $($screen).append("<p class='story'>" + storyArr[i] + "</p>")
+
+        $( "#chapter-one-button" ).on('click', function() {
+            if(i < storyArr.length) {
+                $(".story").remove()
+                i++
+                $($screen).append("<p class='story'>" + storyArr[i] + "</p>")
+            }
+            
+        })
+
+    }
     
 }
 
