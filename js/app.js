@@ -129,8 +129,11 @@ const game = {
             }
         }) //End
 
-        //Navigate meetRaven
-        
+        //Navigate meetRaven - NEW FUNCTION
+        // let j = 0
+
+        // $($screen).prepend("<p class='meet-raven'>" + meetRaven[j] + "</p>")
+
 
     } 
 }
