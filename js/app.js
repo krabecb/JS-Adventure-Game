@@ -11,7 +11,7 @@ $($statsContainer).prepend($ulStats)
 const $mainContainer = $('<div id="main"></div>')
 $($gameContainer).append($mainContainer)
 
-const $title = $('<h1 id="title">The Raven\s Whisper</h1>')
+const $title = $(`<h1 id="title">The Raven's Whisper</h1>`)
 $($mainContainer).prepend($title)
 
 const $screen = $('<div id="screen"></div>')
@@ -95,7 +95,7 @@ const game = {
 
     chapterOne: function() {
         let storyArr = [
-            `You're name is ${this.adventurer.name}, and you have always wanted to go on an adventure. You've dreamed of glorious battles where 
+            `Your name is ${this.adventurer.name}, and you have always wanted to go on an adventure. You've dreamed of glorious battles where 
             you would strike down any foe in your path.`, 
             "But unfortunately, you are just a table cleaner at the village tavern and aren't sure you would be a good fit as an adventurer anyway.",
             "Then one night, a stranger walks into the tavern, dressed in a hooded cloak and equipped with a bow and dagger. He sits down at a table in the furthest corner of the tavern and gestures for you.",
@@ -104,6 +104,12 @@ const game = {
             "The stranger confesses that his original guide did not survive the journey, but has a pet raven who keeps him company. Reluctantly, you agree to travel with him. You decide now is the time to take a leap of faith at being an adventurer, and the bag of coin would solve nearly all of your financial problems."
         ]
 
+        let meetRaven = [
+            "You gather all your belongings and meet up with the stranger at the village entrance. He gestures for you to pack your belongings onto his horse. As you do so, your gaze shifts to the large raven perched on his shoulder.",
+            "Test paragraph."
+        ]
+
+        //Navigate the storyArr
         let i = 0
 
         $($screen).prepend("<p class='story'>" + storyArr[i] + "</p>")
@@ -121,7 +127,11 @@ const game = {
                 $($screen).prepend("<p class='story'>" + storyArr[i] + "</p>")
                 }
             }
-        })
+        }) //End
+
+        //Navigate meetRaven
+        
+
     } 
 }
 
