@@ -55,6 +55,7 @@ button {
 #player-options {
 	width: 600px;
 	display: flex;
+	text-align: center;
 	justify-content: space-evenly;
 }
 

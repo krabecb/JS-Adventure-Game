@@ -86,6 +86,7 @@ const game = {
         ]
 
         $statsContainer.val('')
+        $($ulStats).text('')
 
         for(let i = 0; i < statsList.length; i++) {
             let $listName = $('<li id="'+ statsList[i] +'">'+ statsList[i] + ": " + adventurerStats[i] +'</li>')
@@ -104,10 +105,6 @@ const game = {
             "The stranger confesses that his original guide did not survive the journey, but has a pet raven who keeps him company. Reluctantly, you agree to travel with him. You decide now is the time to take a leap of faith at being an adventurer, and the bag of coin would solve nearly all of your financial problems."
         ]
 
-        let meetRaven = [
-            "You gather all your belongings and meet up with the stranger at the village entrance. He gestures for you to pack your belongings onto his horse. As you do so, your gaze shifts to the large raven perched on his shoulder.",
-            "Test paragraph."
-        ]
 
         //Navigate the storyArr
         let i = 0
@@ -123,19 +120,66 @@ const game = {
                 i++
                 if(i === storyArr.length) {
                     $("#chapter-one-button").remove()
+                    game.chapterTwo()
                 } else {
                 $($screen).prepend("<p class='story'>" + storyArr[i] + "</p>")
                 }
             }
         }) //End
+    },
 
-        //Navigate meetRaven - NEW FUNCTION
-        // let j = 0
+    //Navigate meetRaven
+    chapterTwo: function() {
+        let meetRaven = [
+            "You gather all your belongings and meet up with the stranger at the village entrance. He gestures for you to pack your belongings onto his horse. As you do so, your gaze shifts to the large raven perched on his shoulder.",
+            "His large, beady eyes look innocent! but his beak seems fairly sharp. What do you want to do?"
+        ]
 
-        // $($screen).prepend("<p class='meet-raven'>" + meetRaven[j] + "</p>")
+        //Functions for player choice
 
+        function decreaseHealth() {
+            $($screen).prepend("<p class='decrease-health'>The raven bowed its head as your hand approached the pitch black feathers on his back. Suddenly, he pecked you with his sharp beak and let out an ear-piercing caw. The stranger chuckles and shakes his head.</p>")
+            game.adventurer.health -= 10
+            game.showStats()
+            const $continueButton = $('<button id="continue-button">Continue</button>')
+            $screen.append($continueButton)
+            $( "#continue-button" ).on('click', function() {
+                game.chapterThree()
+            })
+        }
+        
+        let j = 0
 
-    } 
+        $($screen).prepend("<p class='meet-raven'>" + meetRaven[j] + "</p>")
+
+        const $nextButton = $('<button id="chapter-two-button">Next</button>')
+        $screen.append($nextButton)
+
+        $( "#chapter-two-button" ).on('click', function() {
+            if(j < meetRaven.length) {
+                $(".meet-raven").remove()
+                j++
+                if(j === meetRaven.length) {
+                    $("#chapter-two-button").remove()
+                    $playerOptions.css({
+                        display: ''
+                    })
+                    $("#button-0").text("Pet the raven.").on('click', function() {
+                        decreaseHealth()
+                    })
+                    $("#button-1").text("Say hello.")
+                    $("#button-2").text("Taunt the raven.")
+                    $("#button-3").text("Do nothing.")
+                } else {
+                    $($screen).prepend("<p class='meet-raven'>" + meetRaven[j] + "</p>")
+                }
+            }
+        }) //End
+    },
+
+    chapterThree: function() {
+        console.log("I hit the chapterThree function!")
+    }
 }
 
 //EVENT - Start Adventure button
