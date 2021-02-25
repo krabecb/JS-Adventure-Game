@@ -94,6 +94,16 @@ const game = {
         } 
     },
 
+    decreaseHealth: function() {
+            game.adventurer.health -= 10
+            game.showStats()
+            const $continueButton = $('<button id="continue-button">Continue</button>')
+            $screen.append($continueButton)
+            $( "#continue-button" ).on('click', function() {
+                game.chapterThree()
+            })
+    },
+
     chapterOne: function() {
         let storyArr = [
             `Your name is ${this.adventurer.name}, and you have always wanted to go on an adventure. You've dreamed of glorious battles where 
@@ -134,19 +144,6 @@ const game = {
             "You gather all your belongings and meet up with the stranger at the village entrance. He gestures for you to pack your belongings onto his horse. As you do so, your gaze shifts to the large raven perched on his shoulder.",
             "His large, beady eyes look innocent! but his beak seems fairly sharp. What do you want to do?"
         ]
-
-        //Functions for player choice
-
-        function decreaseHealth() {
-            $($screen).prepend("<p class='decrease-health'>The raven bowed its head as your hand approached the pitch black feathers on his back. Suddenly, he pecked you with his sharp beak and let out an ear-piercing caw. The stranger chuckles and shakes his head.</p>")
-            game.adventurer.health -= 10
-            game.showStats()
-            const $continueButton = $('<button id="continue-button">Continue</button>')
-            $screen.append($continueButton)
-            $( "#continue-button" ).on('click', function() {
-                game.chapterThree()
-            })
-        }
         
         let j = 0
 
@@ -165,11 +162,18 @@ const game = {
                         display: ''
                     })
                     $("#button-0").text("Pet the raven.").on('click', function() {
-                        decreaseHealth()
+                        $($screen).prepend("<p class='decrease-health'>The raven bowed its head as your hand approached the pitch black feathers on his back. Suddenly, he pecked you with his sharp beak and let out an ear-piercing caw. The stranger chuckles and shakes his head.</p>")
+                        game.decreaseHealth()
                     })
-                    $("#button-1").text("Say hello.")
-                    $("#button-2").text("Taunt the raven.")
-                    $("#button-3").text("Do nothing.")
+                    $("#button-1").text("Say hello.").on('click', function() {
+                        console.log("Increase speech.")
+                    })
+                    $("#button-2").text("Taunt the raven.").on('click', function() {
+                        console.log("Decrease health and increase defense.")
+                    })
+                    $("#button-3").text("Do nothing.").on('click', function() {
+                        console.log("Chapter three.")
+                    })
                 } else {
                     $($screen).prepend("<p class='meet-raven'>" + meetRaven[j] + "</p>")
                 }
