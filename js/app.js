@@ -94,6 +94,12 @@ const game = {
         } 
     },
 
+    hideButtons: function() {
+        $playerOptions.css({
+            display: 'none'
+        })
+    },
+
     //INCREASE FUNCTIONS
 
     increaseSpeech: function() {
@@ -182,21 +188,26 @@ const game = {
                     })
                     $("#button-0").text("Pet the raven.").on('click', function() {
                         $(".question").remove()
+                        game.hideButtons()
                         $($screen).prepend("<p class='decrease-health'>The raven bowed its head as your hand approached the pitch black feathers on his back. Suddenly, he pecked you with his sharp beak and let out an ear-piercing caw. The stranger chuckles and shakes his head.</p>")
                         game.decreaseHealth()
                     })
                     $("#button-1").text("Say hello.").on('click', function() {
                         $(".question").remove()
+                        game.hideButtons()
                         $($screen).prepend("<p class='increase-speech'>The raven tilted its head to the side and reluctantly greeted you back.</p>")
                         game.increaseSpeech()
                     })
                     $("#button-2").text("Taunt the raven.").on('click', function() {
                         $(".question").remove()
-                        console.log("Decrease health and increase defense.")
+                        game.hideButtons()
+                        $($screen).prepend("<p class='decrease-health'>The raven spread its wings in frustration and pecked you with his beak.</p>")
+                        game.decreaseHealth()
                     })
                     $("#button-3").text("Do nothing.").on('click', function() {
                         $(".question").remove()
-                        console.log("Chapter three.")
+                        game.hideButtons()
+                        game.chapterThree()
                     })
                 } else {
                     $($screen).prepend("<p class='meet-raven'>" + meetRaven[j] + "</p>")
