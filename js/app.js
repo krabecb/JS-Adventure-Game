@@ -97,6 +97,7 @@ const game = {
     decreaseHealth: function() {
             game.adventurer.health -= 10
             game.showStats()
+            $($screen).append("<p class='notification'>(Your health dropped by 10 points)</p>")
             const $continueButton = $('<button id="continue-button">Continue</button>')
             $screen.append($continueButton)
             $( "#continue-button" ).on('click', function() {
@@ -158,20 +159,25 @@ const game = {
                 j++
                 if(j === meetRaven.length) {
                     $("#chapter-two-button").remove()
+                    $($screen).prepend("<p class='question'>His large, beady eyes look innocent! but his beak seems fairly sharp. What do you want to do?</p>")
                     $playerOptions.css({
                         display: ''
                     })
                     $("#button-0").text("Pet the raven.").on('click', function() {
+                        $(".question").remove()
                         $($screen).prepend("<p class='decrease-health'>The raven bowed its head as your hand approached the pitch black feathers on his back. Suddenly, he pecked you with his sharp beak and let out an ear-piercing caw. The stranger chuckles and shakes his head.</p>")
                         game.decreaseHealth()
                     })
                     $("#button-1").text("Say hello.").on('click', function() {
+                        $(".question").remove()
                         console.log("Increase speech.")
                     })
                     $("#button-2").text("Taunt the raven.").on('click', function() {
+                        $(".question").remove()
                         console.log("Decrease health and increase defense.")
                     })
                     $("#button-3").text("Do nothing.").on('click', function() {
+                        $(".question").remove()
                         console.log("Chapter three.")
                     })
                 } else {
