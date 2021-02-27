@@ -94,16 +94,33 @@ const game = {
         } 
     },
 
-    decreaseHealth: function() {
-            game.adventurer.health -= 10
-            game.showStats()
-            $($screen).append("<p class='notification'>(Your health dropped by 10 points)</p>")
-            const $continueButton = $('<button id="continue-button">Continue</button>')
-            $screen.append($continueButton)
-            $( "#continue-button" ).on('click', function() {
-                game.chapterThree()
-            })
+    //INCREASE FUNCTIONS
+
+    increaseSpeech: function() {
+        game.adventurer.speech += 10
+        game.showStats()
+        $($screen).append("<p class='notification'>(Your speech increased by 10 points)</p>")
+        const $continueButton = $('<button id="continue-button">Continue</button>')
+        $screen.append($continueButton)
+        $( "#continue-button" ).on('click', function() {
+            game.chapterThree()
+        })
     },
+
+    //DECREASE FUNCTIONS
+
+    decreaseHealth: function() {
+        game.adventurer.health -= 10
+        game.showStats()
+        $($screen).append("<p class='notification'>(Your health dropped by 10 points)</p>")
+        const $continueButton = $('<button id="continue-button">Continue</button>')
+        $screen.append($continueButton)
+        $( "#continue-button" ).on('click', function() {
+            game.chapterThree()
+        })
+    },
+
+    //CHAPTERS
 
     chapterOne: function() {
         let storyArr = [
@@ -170,7 +187,8 @@ const game = {
                     })
                     $("#button-1").text("Say hello.").on('click', function() {
                         $(".question").remove()
-                        console.log("Increase speech.")
+                        $($screen).prepend("<p class='increase-speech'>The raven tilted its head to the side and reluctantly greeted you back.</p>")
+                        game.increaseSpeech()
                     })
                     $("#button-2").text("Taunt the raven.").on('click', function() {
                         $(".question").remove()
